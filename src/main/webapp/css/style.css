@@ -36,24 +36,6 @@ a:hover {
     color: #003366;
 }
 
-#logo {
-    font: 24px Arial, Helvetica, sans-serif;
-    color: #5C743D;
-    letter-spacing: .2em;
-    line-height: 30px;
-}
-
-#tagline {
-    font: 11px Arial, Helvetica, sans-serif;
-    color: #003366;
-    letter-spacing: .4em;
-    line-height: 18px;
-}
-
-#monthformat {
-    border-bottom: 1px dashed #5C743D;
-}
-
 #dateformat {
     font: 11px Arial, Helvetica, sans-serif;
     color: #003366;
@@ -79,32 +61,6 @@ a:hover {
     color: #666666;
     line-height: 20px;
     margin-top: 0px;
-}
-
-.pageName {
-    font: 18px Arial, Helvetica, sans-serif;
-    color: #99CC66;
-    line-height: 26px;
-    letter-spacing: .21em;
-}
-
-.subHeader {
-    font: bold 11px Arial, Helvetica, sans-serif;
-    color: #993300;
-    line-height: 22px;
-    letter-spacing: .2em;
-}
-
-.quote {
-    font: 20px Arial, Helvetica, sans-serif;
-    color: #759DA1;
-    line-height: 30px;
-}
-
-.smallText {
-    font: 11px Arial, Helvetica, sans-serif;
-    color: #333333;
-    line-height: 22px;
 }
 
 .navText {
@@ -138,6 +94,15 @@ a:hover {
 }
 
 .msgText {
+    font: 14px;
     color: #006600;
     font-style: italic;
+}
+
+.welcomeText {
+    font: 24px Arial, Helvetica, sans-serif;
+    color: #003366;
+    font-weight: bold;
+    line-height: 26px;
+    letter-spacing: .21em;
 }

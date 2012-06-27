@@ -2,7 +2,6 @@ package net.therap.filter;
 
 import net.therap.domain.User;
 import org.slf4j.LoggerFactory;
-
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

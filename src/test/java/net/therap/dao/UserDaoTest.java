@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.testng.annotations.Test;
 import org.unitils.UnitilsTestNG;
 import org.unitils.dbunit.annotation.DataSet;
+import org.unitils.dbunit.annotation.ExpectedDataSet;
 import org.unitils.spring.annotation.SpringApplicationContext;
 import org.unitils.spring.annotation.SpringBean;
 

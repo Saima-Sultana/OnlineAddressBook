@@ -12,13 +12,30 @@
             }
         }
     </script>
+    <script language="JavaScript">
+        function Validate() {
+            var vcard = document.getElementById("file").value;
+            var checking = vcard.toLowerCase();
+            if (!checking.match(/(\.vcf)$/)) {
+                alert("Please enter File Extensions .vcf");
+                document.getElementById("file").focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 
 <body>
 <table>
     <tr>
-        <td align="right">
-
+        <td height="50px">
+            &nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b><big>Hi! ${User.loginName}</big></b>
         </td>
     </tr>
     <tr>
@@ -26,15 +43,21 @@
             &nbsp;
         </td>
     </tr>
-    <c:if test="${empty contactList}">
-        <c:if test="${not empty searchText}">
-            <tr>
-                <td class="msgText">
-                    Search results with "${searchText}"
-                </td>
-            </tr>
-        </c:if>
+    <c:if test="${not empty searchText}">
         <tr>
+            <td width="100px">
+                &nbsp;
+            </td>
+            <td class="msgText">
+                Search results with "${searchText}"
+            </td>
+        </tr>
+    </c:if>
+    <c:if test="${empty contactList}">
+        <tr>
+            <td width="100px">
+                &nbsp;
+            </td>
             <td>
                 There is no contact list.
             </td>
@@ -42,6 +65,9 @@
     </c:if>
     <c:if test="${not empty contactList}">
         <tr>
+            <td width="200px">
+                &nbsp;
+            </td>
             <td>
                 <fieldset>
                     <legend>Contact List</legend>
@@ -77,6 +103,23 @@
             </td>
         </tr>
     </c:if>
+    <form method="POST" action="importcontact.html" enctype="multipart/form-data" onsubmit="return Validate();">
+        <tr>
+            <td height="50px">
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td width="200px">
+                &nbsp;
+            </td>
+            <td>
+                Import Contact:  <input type="file" name="file" id="file"/>
+                <br>
+                <td><input type="submit" value="Import"/></td>
+            </td>
+        </tr>
+    </form>
 </table>
 </body>
 

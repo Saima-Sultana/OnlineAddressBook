@@ -34,7 +34,6 @@
             <td bgcolor="#3366CC" colspan="7">
                 <table border="0" cellspacing="0" cellpadding="0" width="100%" id="navigation">
                     <td width="60"><a href="loginform.html" class="navText">Home</a></td>
-                    <td width="90"><a href="javascript:;" class="navText">My Profile</a></td>
                     <td width="90"><a href="mycontacts.html" class="navText">My Contacts</a></td>
                     <td width="100"><a href="addcontact.html" class="navText">Add Contact</a></td>
                     <c:if test="${not empty User}">

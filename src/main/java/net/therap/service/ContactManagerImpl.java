@@ -5,10 +5,8 @@ import net.therap.domain.Contact;
 import net.therap.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +14,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 @Service("ContactManager")
-public class ContactManagerImpl implements  ContactManager{
+public class ContactManagerImpl implements  ContactManager {
     @Autowired
     private ContactDao contactDao;
 
@@ -68,5 +66,75 @@ public class ContactManagerImpl implements  ContactManager{
             "REV:" + contact.getLastRevision() + "\n" +
             "END:VCARD";
         return str;
+    }
+
+    public void importVcard(User user, MultipartFile multipartFile) {
+        Contact contact = new Contact();
+        StringTokenizer st;
+        if (!multipartFile.isEmpty()) {
+            try {
+                BufferedReader input = new BufferedReader(new InputStreamReader(multipartFile.getInputStream()));
+                try {
+                    String line = null;
+                    while ((line = input.readLine()) != null) {
+                        if(line.startsWith("N:")) {
+                            String str = line.substring(2);
+                            st = new StringTokenizer(str, ";");
+                            while (st.hasMoreTokens()) {
+                                contact.setLastName(st.nextToken());
+                                contact.setFirstName(st.nextToken());
+                            }
+
+                        }
+                        else if(line.startsWith("FN:")) {
+                            String str = line.substring(3);
+                            contact.setFormattedName(str);
+                        }
+                        else if(line.startsWith("ORG:")) {
+                            String str = line.substring(4);
+                            contact.setOrg(str);
+                        }
+                        else if(line.startsWith("TITLE:")) {
+                            String str = line.substring(6);
+                            contact.setEmail(str);
+                        }
+                        else if(line.startsWith("PHOTO:")) {
+                            String str = line.substring(6);
+                            contact.setPhotoUrl(str);
+                        }
+                        else if(line.startsWith("TEL;TYPE=\"work")) {
+                            int i = line.lastIndexOf(":");
+                            String str = line.substring(i+1);
+                            contact.setTelWork(str);
+                        }
+                        else if(line.startsWith("TEL;TYPE=\"home")) {
+                            int i = line.lastIndexOf(":");
+                            String str = line.substring(i+1);
+                            contact.setTelHome(str);
+                        }
+                        else if(line.startsWith("ADR")) {
+                            int i = line.lastIndexOf("=");
+                            String str = line.substring(i+1);
+                            contact.setAddress(str);
+                        }
+                        else if(line.startsWith("EMAIL:")) {
+                            String str = line.substring(6);
+                            contact.setEmail(str);
+                        }
+                        else if(line.startsWith("REV:")) {
+                            String str = line.substring(4);
+                            contact.setLastRevision(str);
+                        }
+                    }
+                } finally {
+                    input.close();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                return;
+            }
+            contact.setUser(user);
+            contactDao.saveContact(contact);
+        }
     }
 }

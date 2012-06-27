@@ -6,7 +6,6 @@ import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 import java.util.List;
 
 public class ContactDao extends HibernateDaoSupport {
@@ -34,7 +33,7 @@ public class ContactDao extends HibernateDaoSupport {
         String query = "FROM Contact contact WHERE contact.user = ?";
 
         List<Contact> contactList = this.getHibernateTemplate().find(query, user);
-        return contactList;
+        return (contactList.size() == 0 ? null:contactList);
     }
 
     public void deleteContact(long contactId) {
@@ -48,6 +47,6 @@ public class ContactDao extends HibernateDaoSupport {
         String query = "FROM Contact contact WHERE contact.user = ? AND contact.formattedName like ?";
 
         List<Contact> contactList = this.getHibernateTemplate().find(query, user, "%"+name+"%");
-        return contactList;
+        return (contactList.size() == 0 ? null:contactList);
     }
 }

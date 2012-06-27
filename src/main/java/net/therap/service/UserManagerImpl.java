@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 @Service("UserManager")
 public class UserManagerImpl implements UserManager {
-
     @Autowired
     private UserDao userDao;
 
