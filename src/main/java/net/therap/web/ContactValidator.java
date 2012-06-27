@@ -19,12 +19,13 @@ public class ContactValidator implements Validator {
     }
 
     public void validate(Object obj, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required.name");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "required.firstname");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "required.lastname");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "telWork", "required.telWork");
 
         Contact contact = (Contact) obj;
 
-        if (!isValidEmail(contact.getEmail().trim()))
+        if (!contact.getEmail().trim().isEmpty() && !isValidEmail(contact.getEmail()))
             errors.rejectValue("email", "incorrect.email");
     }
 

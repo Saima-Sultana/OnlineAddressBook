@@ -13,7 +13,7 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -53,6 +53,10 @@ public class MyContactsController {
 
         log.info("in post");
         contactValidator.validate(contact, result);
+        if (result.hasErrors()) {
+            model.addAttribute("newContact", contact);
+            return "addcontact";
+        }
         HttpSession session = request.getSession(false);
         User user = (User) session.getAttribute("User");
         contact.setUser(user);

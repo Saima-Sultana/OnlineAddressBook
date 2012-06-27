@@ -7,7 +7,8 @@ import javax.persistence.*;
 public class Contact {
     private long contactId;
     private User user;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String formattedName;
     private String org;
     private String title;
@@ -44,13 +45,22 @@ public class Contact {
         this.user = user;
     }
 
-    @Column(name = "NAME",  nullable = false)
-    public String getName() {
-        return name;
+    @Column(name = "FIRST_NAME", nullable = false)
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Column(name = "LAST_NAME", nullable = false)
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Column(name = "FORMATTED_NAME")
@@ -125,7 +135,7 @@ public class Contact {
         this.email = email;
     }
 
-    @Column(name = "LAST_REVISION")
+    @Column(name = "LAST_REVISION", nullable = false)
     public String getLastRevision() {
         return lastRevision;
     }

@@ -33,6 +33,5 @@ public class UserDao extends HibernateDaoSupport {
 
         List<User> userList = this.getHibernateTemplate().findByNamedParam(query, "login_name", userName);
         return (userList.size() == 0) ? null:userList.get(0);
-
     }
 }

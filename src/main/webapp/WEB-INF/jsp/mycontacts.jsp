@@ -16,9 +16,6 @@
 
 <body>
 <table>
-    <form:form action="search">
-
-    </form:form>
     <tr>
         <td align="right">
 
@@ -30,9 +27,16 @@
         </td>
     </tr>
     <c:if test="${empty contactList}">
+        <c:if test="${not empty searchText}">
+            <tr>
+                <td class="msgText">
+                    Search results with "${searchText}"
+                </td>
+            </tr>
+        </c:if>
         <tr>
             <td>
-                Your contact list is still empty!
+                There is no contact list.
             </td>
         </tr>
     </c:if>
@@ -41,12 +45,21 @@
             <td>
                 <fieldset>
                     <legend>Contact List</legend>
-                    <table width="400px" bgcolor="f8f8ff" border="0" cellspacing="0" cellpadding="5">
-                        <c:forEach var="contact" items="${contactList}">
+                    <table width="400px" border="0" cellspacing="2" cellpadding="5">
+                        <form method="POST" action = "searchcontact.html">
                             <tr>
+                                <td>Enter Contact Name:</td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="name"/><td>
+                                <td><input type="submit" value="Search"/></td>
+                            </tr>
+                        </form>
+                        <c:forEach var="contact" items="${contactList}">
+                            <tr bgcolor="f8f8ff">
                                 <td>
                                     <a href="contactdetails.html?contactId=${contact.contactId}">
-                                        <b><big>${contact.name}</big></b>
+                                        <b><big>${contact.formattedName}</big></b>
                                     </a>
                                     <br>
                                     ${contact.email}

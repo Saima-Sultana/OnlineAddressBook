@@ -19,9 +19,14 @@
             <legend>Contact Info</legend>
             <table width="100%" bgcolor="f8f8ff" border="0" cellspacing="0" cellpadding="5">
                 <tr>
-                    <td><label class="required"> * </label>Name:</td>
-                    <td><form:input path="name" maxlength="255"/></td>
-                    <td><form:errors path="name" cssClass="error"/></td>
+                    <td><label class="required"> * </label>First Name:</td>
+                    <td><form:input path="firstName" maxlength="255"/></td>
+                    <td><form:errors path="firstName" cssClass="error"/></td>
+                </tr>
+                <tr>
+                    <td><label class="required"> * </label>Last Name:</td>
+                    <td><form:input path="lastName" maxlength="255"/></td>
+                    <td><form:errors path="lastName" cssClass="error"/></td>
                 </tr>
                 <tr>
                     <td>Organization:</td>
@@ -49,7 +54,7 @@
                     <td><form:input path="address" maxlength="255"/></td>
                 </tr>
                 <tr>
-                    <td><label class="required"> * </label>E-mail:</td>
+                    <td>E-mail:</td>
                     <td><form:input path="email"/></td>
                     <td><form:errors path="email" cssClass="error"/></td>
                 </tr>

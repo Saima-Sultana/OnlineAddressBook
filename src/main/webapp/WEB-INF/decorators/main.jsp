@@ -11,7 +11,7 @@
     <table width="80%" border="0" cellspacing="0" cellpadding="0" align="center">
         <tr>
             <td colspan="7">
-                <img src='<c:url value="/images/Banner2.jpg"/>' alt="Header image" width="100%" height="180" border="0"/>
+                <img src='<c:url value="/images/Flowerwall2.jpg"/>' alt="Header image" width="100%" height="180" border="0"/>
             </td>
         </tr>
         <tr>

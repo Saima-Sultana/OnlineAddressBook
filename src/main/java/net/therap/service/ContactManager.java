@@ -11,4 +11,6 @@ public interface ContactManager {
     public Contact getContact(long id);
     public List<Contact> getContacts(User user);
     public void deleteContact(long contactId);
+    public List<Contact> searchContact(User user, String name);
+    public String exportVcard(Contact contact);
 }

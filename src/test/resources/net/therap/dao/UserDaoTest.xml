@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <saima_user user_id="1" email="a@b.com" first_name="a" last_name="a" login_name="saima" password="user" version="0"/>
+</dataset>

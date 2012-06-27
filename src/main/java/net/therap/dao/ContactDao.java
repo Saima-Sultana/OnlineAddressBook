@@ -43,4 +43,11 @@ public class ContactDao extends HibernateDaoSupport {
         session.delete(contact);
         session.flush();
     }
+
+    public List<Contact> searchContact(User user, String name) {
+        String query = "FROM Contact contact WHERE contact.user = ? AND contact.formattedName like ?";
+
+        List<Contact> contactList = this.getHibernateTemplate().find(query, user, "%"+name+"%");
+        return contactList;
+    }
 }

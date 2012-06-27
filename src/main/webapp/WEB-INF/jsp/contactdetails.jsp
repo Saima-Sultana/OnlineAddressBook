@@ -18,8 +18,12 @@
         <legend>Contact Info</legend>
         <table width="400px" bgcolor="f8f8ff" border="0" cellspacing="0" cellpadding="5">
             <tr>
-                <td>Name:</td>
-                <td>${contact.name}</td>
+                <td>First Name:</td>
+                <td>${contact.firstName}</td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td>${contact.lastName}</td>
             </tr>
             <tr>
                 <td>Organization:</td>
@@ -53,6 +57,9 @@
     </fieldset>
     <br>
     <input type="button" align="right" value="Back" onClick="returnHome()">
+    <br>
+    <br>
+    <a href="exportcontact.html?contactId=${contact.contactId}">Export this contact</a>
 </body>
 
 </html>
