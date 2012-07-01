@@ -34,7 +34,6 @@ public class UserController {
     public ModelAndView processRegistrationForm(@ModelAttribute("newUser") User user, BindingResult result, ModelMap model) {
 
         log.info("in post");
-        userValidator.checkLoginName(user, result);
         userValidator.validate(user, result);
 
         if (result.hasErrors()) {

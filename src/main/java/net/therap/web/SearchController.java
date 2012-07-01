@@ -25,11 +25,15 @@ public class SearchController {
     private ContactManager contactManager;
 
     @RequestMapping(value = "searchcontact.html", method = RequestMethod.POST)
-    public ModelAndView processSearchForm(@RequestParam(required= false, defaultValue="") String name, ModelMap model,
+    public ModelAndView processSearchForm(@RequestParam String name, ModelMap model,
                                     HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session = request.getSession(false);
         User user = (User) session.getAttribute("User");
+
+        if(name.trim().isEmpty())
+           return new ModelAndView("mycontacts", model);
+
         List<Contact> contactList = contactManager.searchContact(user, name.trim());
 
         model.addAttribute("contactList", contactList);

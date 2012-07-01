@@ -22,15 +22,6 @@ public class UserValidator implements Validator {
         return User.class.isAssignableFrom(candidate);
     }
 
-    public void checkLoginName(Object obj, Errors errors) {
-        User user = (User) obj;
-        User user2 = userManager.getUserByLoginName(user.getLoginName());
-
-        if (user2 != null) {
-            errors.rejectValue("loginName", "alreadyexists.username");
-        }
-    }
-
     public void validate(Object obj, Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "loginName", "required.username");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "required.password");
@@ -38,6 +29,11 @@ public class UserValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "required.lastname");
 
         User user = (User) obj;
+
+        User user2 = userManager.getUserByLoginName(user.getLoginName());
+        if (user2 != null) {
+            errors.rejectValue("loginName", "alreadyexists.username");
+        }
 
         if (!isValidEmail(user.getEmail().trim()))
             errors.rejectValue("email", "incorrect.email");

@@ -56,13 +56,6 @@ a:hover {
 }
 
 /* Class Styles */
-.bodyText {
-    font: 11px Arial, Helvetica, sans-serif;
-    color: #666666;
-    line-height: 20px;
-    margin-top: 0px;
-}
-
 .navText {
     font: 12px Arial, Helvetica, sans-serif;
     color: #003366;
@@ -86,11 +79,6 @@ a:hover {
 .required {
     color: #ff0000;
     font-weight: bold;
-}
-
-.tableText {
-    color: #666666;
-    font-style: italic;
 }
 
 .msgText {
